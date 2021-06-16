@@ -11,6 +11,7 @@
     * [泛型](part1/7.md)
 * 进阶
     * [Decorators](part2/decorator.md)
+    * [Reflect Metadata](part2/reflect-metadata.md)
 * JavaScript
     * [JavaScript文件里的类型检查](javascript/1.md)
 
