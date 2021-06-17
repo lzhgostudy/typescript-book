@@ -10,6 +10,7 @@
     * [枚举](part1/6.md)
     * [泛型](part1/7.md)
 * 进阶
+    * [属性描述符](part2/property-descriptor.md)
     * [Decorators](part2/decorator.md)
     * [Reflect Metadata](part2/reflect-metadata.md)
 * JavaScript
