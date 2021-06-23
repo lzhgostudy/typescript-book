@@ -10,6 +10,7 @@
     * [枚举](part1/enum.md)
     * [泛型](part1/generics.md)
     * [tsconfig](part1/tsconfig.md)
+    * [@types](part1/types.md)
 * 进阶
     * [实用工具类](part2/generics-tool.md)
     * [属性描述符](part2/property-descriptor.md)
