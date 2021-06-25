@@ -51,3 +51,14 @@ type Exclude<T, U> = T extends U ? never : T;
 ```
 
 如果`T`能赋值给`U`类型的话，那么就会返回`never`类型，否则返回`T`类型。最终实现的效果就是将`T`中某些属于`U`的类型移除掉。
+
+
+### ReturnType
+
+`ReturnType<T>`的作用是用于获取函数`T`的返回类型。
+
+```ts
+/** Obtain the return type of a function type */
+type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
+```
+

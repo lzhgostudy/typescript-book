@@ -371,6 +371,50 @@ function validate(target: any, propertyName: string, descriptor: TypedPropertyDe
 > 注意  这个例子使用了 `reflect-metadata` 库。 查看元数据了解 `reflect-metadata` 库的更多信息。
 
 
+## 装饰器执行顺序
+
+```ts
+function extension(params: string) {
+    return function (target: any) {
+        console.log("类装饰器")
+    }
+}
+
+function method(params: string) {
+    return function (target: any, name: string, descriptor: PropertyDescriptor) {
+        console.log("方法装饰器")
+    }
+}
+
+function attribute(params: string) {
+    return function (target: any, name: string) {
+        console.log('属性装饰器')
+    }
+}
+
+function argument(params: string) {
+    return function (target: any, name: string, index: number) {
+        console.log('参数装饰器', index)
+    }
+}
+
+@extension('类装饰器')
+class Employee {
+    @attribute('属性装饰器')
+    public name!: string
+
+    @method('方法装饰器')
+    salary(@argument('参数装饰器') name: string, @argument('参数装饰器') department: string) {}
+}
+```
+
+查看运行结果：
+1. 属性装饰器
+2. 参数装饰器 1
+3. 参数装饰器 0
+4. 方法装饰器
+5. 类装饰器
+
 ## 元数据
 
 一些例子使用了 `reflect-metadata` 库来支持[实验性的 metadata API](https://github.com/rbuckton/ReflectDecorators) 。 这个库还不是 ECMAScript (JavaScript) 标准的一部分。 然而，当装饰器被 ECMAScript 官方标准采纳后，这些扩展也将被推荐给 ECMAScript 以采纳。

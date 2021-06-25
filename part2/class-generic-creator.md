@@ -153,5 +153,45 @@ class Point2D implements Point {
     }
 }
 
-function newPoint ()
+function newPoint (pointConstructor: PointConstructor,
+    x: number,
+    y: number
+): Point {
+    return new pointConstructor(x, y)
+}
+
+const point: Point = newPoint(Point2D, 1, 2)
+```
+
+
+### 使用泛型创建对象
+
+了解完构造签名和构造函数类型之后，下面我们来开始解决上面遇到的问题，首先我们需要重构以下`create`方法，具体如下所示：
+
+```ts
+class GenericCreator<T> {
+    create<T>(c: { new(): T }): T {
+        return new c
+    }
+}
+```
+
+在以上代码中，我们重定义了`create`成员方法，根据该方法的签名，我们可以知道该方法接收一个参数，其类型是构造函数类型，且该构造函数不包含任何参数，调用该构造函数后，会返回类型T实例。
+
+如果构造函数含有参数的话，比如包含一个`number`类型的参数时，我们可以这样定义`create`方法：
+
+```ts
+create<T>(c: new(a: number) => T, num: number): T {
+    return new c(num)
+}
+```
+
+更新完 `GenericCreator`泛型类，我们就可以使用下面的方式来创建`FirstClass`和`SecondClass`类的实例：
+
+```ts
+const creator1 = new GenericCreator<FirstClass>()
+const firstClass: FirstClass = creator1.create(FirstClass)
+
+const creator2 = new GenericCreator<SecondClass>()
+const secondClass: SecondClass = creator2.create(SecondClass)
 ```
