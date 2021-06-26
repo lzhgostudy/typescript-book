@@ -12,6 +12,7 @@
     * [tsconfig](part1/tsconfig.md)
     * [@types](part1/types.md)
 * 进阶
+    * [infer关键字](part2/infer-keyword.md)
     * [实用工具类](part2/generics-tool.md)
     * [使用泛型创建对象](part2/class-generic-creator.md)
     * [属性描述符](part2/property-descriptor.md)
