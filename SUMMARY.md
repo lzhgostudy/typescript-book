@@ -11,6 +11,7 @@
     * [泛型](part1/generics.md)
     * [tsconfig](part1/tsconfig.md)
     * [@types](part1/types.md)
+    * [环境声明](part1/environment_declare.md)
 * 进阶
     * [is关键字](part2/is-keyword.md)
     * [infer关键字](part2/infer-keyword.md)
