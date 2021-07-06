@@ -1,7 +1,91 @@
 # 接口
 
+接口运行时的影响为0。在TypeScript接口中有很多方式来声明变量的结构。
 
-## 简要
+下面两个是等效的声明，示例 A 使用内联注解，示例B使用接口形式：
+
+```ts
+// 示例 A
+declare const myPoint: { x: number; y: number };
+
+// 示例 B
+interface Point {
+  x: number
+  y: number
+}
+
+declare const myPoint: Point;
+```
+
+示例B的好处在于，如果有人创建了一个基于`myPoint`的库来添加新成员，那么他可以轻松地将此成员添加到`myPoint`的现有声明中：
+
+```ts
+// Lib a.d.ts
+interface Point {
+  x: number
+  y: number
+}
+
+declare const myPoint: Point
+
+
+// Lib b.d.ts
+interface Point {
+  z: number
+}
+
+
+// Your code
+myPoint.z // Allowed!
+```
+
+TypeScript接口是开放式的，这是TypeScript的一个重要原则，它允许你使用接口来模仿JavaScript的可扩展性。
+
+
+### 类可以实现接口
+
+如果你希望在类中使用必须要遵循的接口或别人定义的对象结构，可以使用`implements`关键字来确保其兼容性：
+
+```ts
+interface Point {
+  x: number
+  y: number
+}
+
+class MyPoint implements Point {
+  x: number
+  y: number
+}
+```
+
+基本上，在 implements（实现） 存在的情况下，该外部 `Point` 接口的任何更改都将导致代码库中的编译错误，因此可以轻松地使其保持同步：
+
+```ts
+interface Point {
+  x: number;
+  y: number;
+  z: number; // New member
+}
+
+class MyPoint implements Point {
+  // ERROR : missing member `z`
+  x: number;
+  y: number;
+}
+```
+
+注意，`implements` 限制了类实例的结构，如下所示:
+
+```ts
+let foo: Point = new MyPoint();
+```
+
+但像 `foo: Point = MyPoint` 这样的代码，与其并不是一回事。
+
+
+
+
+## 小结(官方文档) - 2021-06-19
 
 - 在TypeScript里，接口的作用就是为代码定义结构契约；
 - 若函数的形参是一个对象，实际上实参可能会包含很多属性，但是编译器只会检查对应形参声明里那些必须的属性是否存在，并且其类型是否匹配。例如：

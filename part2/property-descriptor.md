@@ -34,7 +34,7 @@ Object.defineProperty(obj, prop, descriptor)
 描述符可同时具有的键值：
 
 ||configurable|enumerable|value|writable|get|set|
-|-|-|-|-|-|-|
+|-|-|-|-|-|-|-|
 |数据描述符|Yes|Yes|Yes|Yes|No|No|
 |存取描述符|Yes|Yes|No|No|Yes|Yes|
 
