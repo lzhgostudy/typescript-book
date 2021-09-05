@@ -1,0 +1,15 @@
+{
+  "name": "typescript-book",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lzhgostudy/typescript-book.git",
+  "author": "Zhihua.Lu <623798099@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.8.2"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
