@@ -6,6 +6,10 @@ module.exports = {
         title: "指南",
         children: [
           ["/guide/typescript-in-5-minutes.md", "5分钟了解TypeScript"],
+          [
+            "/guide/migrating-from-javascript.md",
+            "从JavaScript迁移到TypeScript",
+          ],
         ],
       },
       {
