@@ -1,5 +1,6 @@
 module.exports = {
   title: "TypeScript Book",
+  base: "/typescript-book/",
   themeConfig: {
     sidebar: [
       {
